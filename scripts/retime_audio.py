@@ -83,7 +83,7 @@ if __name__ == '__main__':
     p = argparse.ArgumentParser(description=__doc__)
     p.add_argument('--input', required=True)
     p.add_argument('--output', required=True)
-    p.add_argument('--speed', type=float, default=1.25)
+    p.add_argument('--speed', type=float, default=1.2)
     p.add_argument('--narration', required=True)
     p.add_argument('--report', required=True)
     a = p.parse_args()
