@@ -32,7 +32,9 @@ from script import build_timeline, LEAD
 HERE = os.path.dirname(os.path.abspath(__file__))
 ART = os.path.join(HERE, "art")
 OUT_MP4 = os.path.join(HERE, "成片.mp4")
-NARRATION = os.path.join(HERE, "narration.wav")
+NARRATION = os.path.join(HERE, "narration.mp3")   # 没有 mp3 时自动回退到 wav
+if not os.path.isfile(NARRATION) and os.path.isfile(os.path.join(HERE, "narration.wav")):
+    NARRATION = os.path.join(HERE, "narration.wav")
 
 W, H = 1920, 1080
 ART_H = 900                      # 画窗高度

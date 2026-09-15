@@ -9,7 +9,16 @@ import imageio_ffmpeg
 from script import LEAD, GAP, TAIL, SEGMENTS
 
 HERE = os.path.dirname(os.path.abspath(__file__))
-AUDIO = os.path.join(os.path.dirname(HERE), "audio")
+def _find(name, isdir=True):
+    """兼容两种工程布局：脚本在根目录，或脚本在 scripts/ 子目录。"""
+    for base in (HERE, os.path.dirname(HERE)):
+        c = os.path.join(base, name)
+        if (os.path.isdir(c) if isdir else os.path.isfile(c)):
+            return c
+    return os.path.join(HERE, name)
+
+
+AUDIO = _find("audio")
 OUT = os.path.join(HERE, "narration.wav")
 FF = imageio_ffmpeg.get_ffmpeg_exe()
 
