@@ -1,0 +1,12 @@
+__pycache__/
+*.pyc
+*.pyo
+.chunks/
+chunks/
+preview2/
+*.mp4
+*.wav
+!reference/*.mp3
+.DS_Store
+.idea/
+.vscode/
