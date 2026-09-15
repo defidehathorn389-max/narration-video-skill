@@ -31,10 +31,8 @@ from script import build_timeline, LEAD
 
 HERE = os.path.dirname(os.path.abspath(__file__))
 ART = os.path.join(HERE, "art")
-OUT_MP4 = os.path.join(HERE, "成片.mp4")
-NARRATION = os.path.join(HERE, "narration.mp3")   # 没有 mp3 时自动回退到 wav
-if not os.path.isfile(NARRATION) and os.path.isfile(os.path.join(HERE, "narration.wav")):
-    NARRATION = os.path.join(HERE, "narration.wav")
+OUT_MP4 = os.path.join(HERE, "葡萄.mp4")
+NARRATION = os.path.join(HERE, "narration.mp3")
 
 W, H = 1920, 1080
 ART_H = 900                      # 画窗高度
@@ -88,8 +86,8 @@ RED_WORDS = {"多巴胺", "劫持", "阈值", "更刺激", "赌局", "算法", "
 SLATE_WORDS = {"前额叶", "延迟满足", "重新训练", "等一等再要", "主导权", "真的想要",
                "出口", "机制", "载体"}
 
-TITLE_LINES = []            # 片头标题卡；留空则不显示（配合 script.py 的 LEAD 使用）
-TITLE_SIZE = 78
+TITLE_LINES = ["你吃的每一颗葡萄", "都是人类从鸟嘴里抢来的"]   # 片头标题卡；留空则不显示
+TITLE_SIZE = 72
 
 KEYS = ["四十分钟", "大拇指", "自制力差", "劫持", "继续滑", "多巴胺", "快乐分子", "快乐",
         "想要", "小红点", "万一", "阈值", "更刺激", "赌局", "算法", "注意力", "差一张",
@@ -634,6 +632,8 @@ def draw_caption(img, lay, cap, t):
 
 def draw_title(img, t):
     """片头标题卡：淡入 → 停顿 → 淡出（给开场留 3 秒）。"""
+    if not TITLE_LINES:          # 留空 = 不显示标题卡（以前会 IndexError 崩掉）
+        return img
     a = clamp((t - 0.15) / 0.45) * clamp((LEAD - 0.15 - t) / 0.45)
     if a <= 0.02:
         return img
