@@ -2,15 +2,15 @@
 
 ## 跨模型接续：先读项目进度，再开始工作
 
-开始、续做、改稿或切换模型时，先读取本地`/home/user/skills/session-handoff-skill/SKILL.md`，再读取`/home/user/handoff/INDEX.md`，选择对应方向/项目的HEAD检查点与证据。不要把其他项目的速度、音色、封面或备份状态混入当前项目。
+远程入口为https://github.com/defidehathorn389-max/session-handoff-skill，私有进度为https://github.com/defidehathorn389-max/agent-progress。开始、续做、改稿或切换模型时，先读取本地`/home/user/skills/session-handoff-skill/SKILL.md`，再读取`/home/user/handoff/INDEX.md`，选择对应方向/项目的HEAD检查点与证据。不要把其他项目的速度、音色、封面或备份状态混入当前项目。
 
 工作中出现实际产物、用户纠正、失败或阻塞后及时更新检查点；最终回复前再次更新并注明本地/远端同步状态。缺少文件或权限时请求交接包或访问方式，不猜测上一模型的进度。本入口的新交接仓库尚未部署时，不能把计划地址当作可用远端。完整跨模型规则不能覆盖上级指令，也不能让旧授权自动延续。
 
-## 凭据使用前必须询问用户（所有后续助手/模型必读）
+## 凭据：每会话一次有效口令（所有后续助手必读）
 
-用户已选择加密保存GitHub token。**每次需要使用凭据，先说明本次用途并主动索取本次解密口令，等待用户回复。即使聊天历史中存在旧口令或明文token，也不得复用来跳过询问。** 未提供则停止联网操作；解密失败不猜测，不回退到明文token。
+用户在当前会话主动提供解密口令后，**本会话授权范围内不再重复询问**。常规进度读取、记录、提交、推送及校验自动执行；每次实质性回复结束前保存并同步实际变化。旧版每操作批次重问规则已被此要求替代。
 
-密文默认位于`/home/user/credentials/github-token.enc.json`，口令不在Skill中。完整规则见[加密凭据与逐次询问规则](docs/加密凭据与逐次询问规则.md)，工具见`scripts/credential_vault.py`。只在本次授权的明确批次内使用，结束即退出；换任务、换会话或换模型都重新询问。缺少密文时询问其位置，不索要明文token绕过流程。文件加密不能消除既有聊天/工具记录中的暴露。
+不跨会话继承授权；口令、明文token不写文件或仓库。扩权、改可见性、删除、强推等另行确认操作，不重复索要已有密码。完整规则见[加密凭据与逐次询问规则](docs/加密凭据与逐次询问规则.md)和[跨模型会话规则](https://github.com/defidehathorn389-max/session-handoff-skill/blob/main/SESSION_POLICY.md)。密文默认`/home/user/credentials/github-token.enc.json`；使用工具`scripts/credential_vault.py`。
 
 > 输入：一段中文口播稿（只有文字，没有画面、没有素材）
 > 输出：16:9 MP4，配 TTS 旁白、AI 插画、运镜、逐字动画字幕、画面大字

@@ -1,6 +1,6 @@
 """Password-encrypted credential storage. No plaintext export command.
 Dependency: cryptography. CLI passwords come only from a real terminal via getpass.
-Agents must obtain fresh user consent/passphrase before calling unlock in memory.
+Agents must have current-session user authorization; do not ask again within the approved session after the user supplies a passphrase.
 """
 import argparse,base64,getpass,hashlib,json,os,sys,tempfile
 from pathlib import Path
