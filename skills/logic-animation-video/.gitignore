@@ -1,0 +1,18 @@
+.venv/
+__pycache__/
+*.py[cod]
+.env
+.env.*
+!.env.example
+*.log
+deliverables/*
+!deliverables/.gitkeep
+examples/rope-45/checks/
+examples/rope-45/audio/paced-*.wav
+examples/rope-45/audio/narration-effects.wav
+examples/rope-45/两根绳子_字幕.srt
+examples/rope-45/两根绳子_横版封面.jpg
+.DS_Store
+
+# Preserve the eight source TTS segments despite the parent repository WAV ignore.
+!examples/rope-45/audio/0[1-8].wav
