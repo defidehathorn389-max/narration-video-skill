@@ -10,3 +10,9 @@ preview2/
 .DS_Store
 .idea/
 .vscode/
+
+# Credential envelopes belong in separately authorized private storage.
+/credentials/
+/.credentials/
+github-token.enc.json
+*.decrypted
